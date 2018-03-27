@@ -38,11 +38,11 @@ var getBearerToken = function() {
         }
     )};
 
-var getStopFromTapi = function(token, stopId) {
+var getAgenciesFromTapi = function(token, stopId) {
     return new Promise(
         (resolve, reject) => {
             var request = new XMLHttpRequest();
-            request.open('GET', 'https://platform.whereismytransport.com/api/stops/' + stopId, true);
+            request.open('GET', 'https://platform.whereismytransport.com/api/agencies', true);
             request.setRequestHeader('Content-type', 'application/json');
             request.setRequestHeader('Authorization', 'Bearer ' + token);
             request.addEventListener('load', function () {
@@ -55,11 +55,11 @@ var getStopFromTapi = function(token, stopId) {
     );
 };
 
-var getStopTimetables = function(token, stopId) {
+var getStopsFromTapi = function(token) {
     return new Promise(
         (resolve, reject) => {
             var request = new XMLHttpRequest();
-            request.open('GET', 'https://platform.whereismytransport.com/api/stops/' + stopId + '/timetables', true);
+            request.open('GET', 'https://platform.whereismytransport.com/api/stops', true);
             request.setRequestHeader('Content-type', 'application/json');
             request.setRequestHeader('Authorization', 'Bearer ' + token);
             request.addEventListener('load', function () {
@@ -72,11 +72,11 @@ var getStopTimetables = function(token, stopId) {
     );
 };
 
-var getLineTimetables = function(token, lineId) {
+var getLinesFromTapi = function(token) {
     return new Promise(
         (resolve, reject) => {
             var request = new XMLHttpRequest();
-            request.open('GET', 'https://platform.whereismytransport.com/api/lines/' + lineId + '/timetables', true);
+            request.open('GET', 'https://platform.whereismytransport.com/api/lines', true);
             request.setRequestHeader('Content-type', 'application/json');
             request.setRequestHeader('Authorization', 'Bearer ' + token);
             request.addEventListener('load', function () {
@@ -89,28 +89,19 @@ var getLineTimetables = function(token, lineId) {
     );
 };
 
-async function getStop(stopId) {
+async function getAgencies() {
     return new Promise((resolve,reject) => {
         getBearerToken()
-        .then(token => getStopFromTapi(token, stopId)) 
+        .then(token => getAgenciesFromTapi(token)) 
         .then(fulfilled => resolve(fulfilled))
         .catch(error => reject(error.message));
     })
 }
 
-async function getStopTimetable(stopId) {
+async function getStops(lineId) {
     return new Promise((resolve,reject) => {
         getBearerToken()
-        .then(token => getStopTimetables(token, stopId)) 
-        .then(fulfilled => resolve(fulfilled))
-        .catch(error => reject(error.message));
-    })
-}
-
-async function getLineTimetable(lineId) {
-    return new Promise((resolve,reject) => {
-        getBearerToken()
-        .then(token => getLineTimetables(token, lineId)) 
+        .then(token => getStopsFromTapi(token)) 
         .then(fulfilled => resolve(fulfilled))
         .catch(error => reject(error.message));
     })
