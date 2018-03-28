@@ -36,7 +36,8 @@ function showErrorMessage(error) {
 }
 
 function bindStopNameToPage(stop) {
-        document.getElementById('title').innerHTML = stop.agency.name + ": " + stop.name;
+        document.getElementById('title').innerHTML = stop.name;
+        document.getElementById('agency').innerHTML = stop.agency.name;
 }
 
 function bindStopTimeTableToPage(timetable) {

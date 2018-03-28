@@ -36,5 +36,22 @@ tr:nth-child(odd) {
     height: 20%;
     margin: 1%;
     margin-top:0%;
+}
+
+h2 {
     font-size: 4vh;
+    text-align:right;
+    float:right;
+}
+
+h1 {
+    font-size: 4vh;
+    text-align:center;
+    float:center;
+}
+
+h3 {
+    font-size: 4vh;
+    text-align:left;
+    float:left;
 }
