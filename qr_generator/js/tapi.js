@@ -55,11 +55,11 @@ var getAgenciesFromTapi = function(token, stopId) {
     );
 };
 
-var getStopsFromTapi = function(token) {
+var getStopsFromTapi = function(token, agencyId) {
     return new Promise(
         (resolve, reject) => {
             var request = new XMLHttpRequest();
-            request.open('GET', 'https://platform.whereismytransport.com/api/stops', true);
+            request.open('GET', `https://platform.whereismytransport.com/api/stops?agencies=${agencyId}&limit=${100}`, true);
             request.setRequestHeader('Content-type', 'application/json');
             request.setRequestHeader('Authorization', 'Bearer ' + token);
             request.addEventListener('load', function () {
@@ -72,11 +72,11 @@ var getStopsFromTapi = function(token) {
     );
 };
 
-var getLinesFromTapi = function(token) {
+var getLinesFromTapi = function(token, agencyId) {
     return new Promise(
         (resolve, reject) => {
             var request = new XMLHttpRequest();
-            request.open('GET', 'https://platform.whereismytransport.com/api/lines', true);
+            request.open('GET', `https://platform.whereismytransport.com/api/lines?agencies=${agencyId}&limit=${100}`, true);
             request.setRequestHeader('Content-type', 'application/json');
             request.setRequestHeader('Authorization', 'Bearer ' + token);
             request.addEventListener('load', function () {
@@ -98,10 +98,10 @@ async function getAgencies() {
     })
 }
 
-async function getStops(lineId) {
-    return new Promise((resolve,reject) => {
+async function getStops(agencyId) {
+    return new Promise( (resolve, reject) => {
         getBearerToken()
-        .then(token => getStopsFromTapi(token)) 
+        .then(token => getStopsFromTapi(token, agencyId)) 
         .then(fulfilled => resolve(fulfilled))
         .catch(error => reject(error.message));
     })

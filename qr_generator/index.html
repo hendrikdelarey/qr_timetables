@@ -3,17 +3,21 @@
     <head>
         <title>Timetable QR Code Creator</title>
         <script src="./js/tapi.js"></script>
+        <script src="./js/qrCodeGenerator.js"></script>
     </head>
     <body>
         <form>
-            <select id="agencySelect" onchange="onAgencySelected(this)">
-                    <option value="volvo">Select Agency</option>
+            <select id="agencySelect" onchange="onAgencySelectedChanged()">
+                    <option value="0">Select Agency</option>
             </select>
             <select id="stopSelect">
-                    <option value="volvo">Select Stop</option>
+                    <option value="0">Select Stop</option>
             </select>
-            <button value="Submit">Generate QR</button>
+            <button onclick="onGenerateQrCodeButtonClick()">Generate QR</button>
         </form>
+        <div id='qrCodeImageView'>
+            
+        </div> 
     </body>
     <script src="./js/index.js"></script>
 </html>
