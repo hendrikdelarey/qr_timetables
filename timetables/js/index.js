@@ -56,8 +56,8 @@ function bindStopTimeTableToPage(timetable) {
 
 function main() {
         startTime();
-        let stopId = getQueryVariable('stopId');
-        let lineId = getQueryVariable('lineId');
+        let stopId = getQueryVariable('stopid');
+        let lineId = getQueryVariable('lineid');
 
         if(stopId) {
                 getStop(stopId)
