@@ -1,6 +1,6 @@
 const url = "https://api.qrserver.com/v1/create-qr-code/";
 const size = 480;
-const destinationUrl = 'file:///F:/Workspaces/QRCodes/timetables/index.html?stopid=';
+const destinationUrl = 'https://hendrikdelarey.github.io/qr_timetables/qr_generator/index.html?stopid=';
 
 function getQrCodeUrl (value) {
     let target = destinationUrl + value;
