@@ -44,7 +44,8 @@ function displayQrCode(qrCode) {
     let imageView = document.getElementById('qrCodeImageView');
     document.getElementById('qrCodeImageView').innerHTML = `
     <iframe width=480 height=480 src='${qrCode}'></iframe>
-    `    
+    `
+    console.log("finish");
 }
 
 function onGenerateQrCodeButtonClick () {
