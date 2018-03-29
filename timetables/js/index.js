@@ -67,7 +67,7 @@ function main() {
                         showErrorMessage(error);
                 });
 
-                getStopTimetable('OUGFyFyd8kuTa6ewAP9VFw')
+                getStopTimetable(stopId)
                 .then(timetable => {
                         bindStopTimeTableToPage(timetable);
                  })
