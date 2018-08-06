@@ -59,8 +59,8 @@ function main() {
         startTime();
         let stopId = getQueryVariable('stopid');
         let lineId = getQueryVariable('lineid');
-        let clientKey = getQueryVariable('key');
-        let clientSecret = getQueryVariable('secret');
+        let clientKey = decodeURIComponent(getQueryVariable('key'));
+        let clientSecret = decodeURIComponent(getQueryVariable('secret'));
 
         if(stopId) {
                 getStop(stopId)
