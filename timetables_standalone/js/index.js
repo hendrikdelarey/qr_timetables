@@ -62,15 +62,27 @@ function main() {
         let clientKey = decodeURIComponent(getQueryVariable('key'));
         let clientSecret = decodeURIComponent(getQueryVariable('secret'));
 
+
+
+        if(window.stop && window.timetable) {
+          bindStopNameToPage(window.stop)
+          bindStopTimeTableToPage(window.timetable)
+          return;
+        }
+
         if(stopId) {
                 getStop(clientKey, clientSecret, stopId)
-                .then(stop => bindStopNameToPage(stop))
+                .then(stop => {
+                        window.stop = stop;
+                        bindStopNameToPage(stop)
+                })
                 .catch(error => {
                         showErrorMessage(error);
                 });
 
                 getStopTimetable(stopId)
                 .then(timetable => {
+                        window.timetable = timetable;
                         bindStopTimeTableToPage(timetable);
                  })
                  .catch(error => {
