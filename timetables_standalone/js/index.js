@@ -80,7 +80,7 @@ function main() {
                         showErrorMessage(error);
                 });
 
-                getStopTimetable(stopId)
+                getStopTimetable(clientKey, clientSecret, stopId)
                 .then(timetable => {
                         window.timetable = timetable;
                         bindStopTimeTableToPage(timetable);
