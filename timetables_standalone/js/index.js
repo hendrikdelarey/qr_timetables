@@ -63,8 +63,8 @@ function main() {
         let clientSecret = decodeURIComponent(getQueryVariable('secret'));
 
         if(stopId) {
-                getStop(stopId)
-                .then(stop => bindStopNameToPage(clientKey, clientSecret, stop))
+                getStop(clientKey, clientSecret, stopId)
+                .then(stop => bindStopNameToPage(stop))
                 .catch(error => {
                         showErrorMessage(error);
                 });
