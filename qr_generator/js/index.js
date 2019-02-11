@@ -43,7 +43,7 @@ function displayQrCode(qrCode) {
     console.log('Display QR code');
     let imageView = document.getElementById('qrCodeImageView');
     document.getElementById('qrCodeImageView').innerHTML = `
-    <iframe width=480 height=480 src='${qrCode}'></iframe>
+    <iframe width=500 height=500 src='${qrCode}'></iframe>
     `
     console.log("finish");
 }

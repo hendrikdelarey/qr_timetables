@@ -1,3 +1,6 @@
+const TAPI_URL = 'https://platform.whereismytransport.com/'
+const IDENTITY_URL = 'https://identity.whereismytransport.com/connect/token'
+
 var getBearerToken = function(key, secret) { 
     var payload = {
         'client_id': key,
@@ -13,7 +16,7 @@ var getBearerToken = function(key, secret) {
             }
             else {
                 var request = new XMLHttpRequest();
-                request.open('POST', 'https://identity.whereismytransport.com/connect/token', true);
+                request.open('POST', IDENTITY_URL, true);
                 request.addEventListener('load', function () {
                     var response = JSON.parse(this.responseText);
                     var token = response.access_token;
@@ -38,7 +41,7 @@ var getStopFromTapi = function(token, stopId) {
     return new Promise(
         (resolve, reject) => {
             var request = new XMLHttpRequest();
-            request.open('GET', 'https://platform.whereismytransport.com/api/stops/' + stopId, true);
+            request.open('GET', TAPI_URL + 'api/stops/' + stopId, true);
             request.setRequestHeader('Content-type', 'application/json');
             request.setRequestHeader('Authorization', 'Bearer ' + token);
             request.addEventListener('load', function () {
@@ -55,7 +58,7 @@ var getStopTimetables = function(token, stopId) {
     return new Promise(
         (resolve, reject) => {
             var request = new XMLHttpRequest();
-            request.open('GET', 'https://platform.whereismytransport.com/api/stops/' + stopId + '/timetables', true);
+            request.open('GET', TAPI_URL + 'api/stops/' + stopId + '/timetables', true);
             request.setRequestHeader('Content-type', 'application/json');
             request.setRequestHeader('Authorization', 'Bearer ' + token);
             request.addEventListener('load', function () {
@@ -72,7 +75,7 @@ var getLineTimetables = function(token, lineId) {
     return new Promise(
         (resolve, reject) => {
             var request = new XMLHttpRequest();
-            request.open('GET', 'https://platform.whereismytransport.com/api/lines/' + lineId + '/timetables', true);
+            request.open('GET', TAPI_URL + 'api/lines/' + lineId + '/timetables', true);
             request.setRequestHeader('Content-type', 'application/json');
             request.setRequestHeader('Authorization', 'Bearer ' + token);
             request.addEventListener('load', function () {
