@@ -2,28 +2,16 @@
 <html>
     <head>
         <title>Timetable QR Code Creator</title>
-        <script src="./js/tapi.js"></script>
         <script src="./js/qrCodeGenerator.js"></script>
     </head>
     <body style="margin:8px;">
         <h1>QR Code Generator</h1>
         <br/>
-        <span>You can generate a QR code to display the Timetable information for a specific stop on the WhereIsMyTransport platform.</span>
+        <span>Insert all the qr code information separated by ,</span>
         <br/>
         <form>
             <br/>
-            <span  style="margin:4px;">Agency:</span>
-            <br/>
-            <select id="agencySelect" onchange="onAgencySelectedChanged()" style="margin:4px;">
-                    <option value="0">Select Agency</option>
-            </select>
-            <br/>
-            <br/>
-            <span  style="margin:4px;">Stop:</span>
-            <br/>
-            <select id="stopSelect" style="margin:4px;">
-                    <option value="0">Select Stop</option>
-            </select>
+            <input id="text_input" type="text" />
             <br/>
             <br/>
             <button type='button' onclick="onGenerateQrCodeButtonClick()" style="margin:4px;">Generate QR</button>
